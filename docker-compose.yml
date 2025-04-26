@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  pdf2exam:
+    image: pdf2exam:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./uploads:/app/uploads
+      - .:/app 
+    networks:
+      - pdf2exam-network
+    secrets:
+      - my_secret
+
+networks:
+  pdf2exam-network:
+    driver: bridge
+
+secrets:
+  my_secret:
+    file: ./my_secret.txt
