@@ -13,13 +13,7 @@ services:
       - .:/app 
     networks:
       - pdf2exam-network
-    secrets:
-      - my_secret
 
 networks:
   pdf2exam-network:
     driver: bridge
-
-secrets:
-  my_secret:
-    file: ./my_secret.txt
